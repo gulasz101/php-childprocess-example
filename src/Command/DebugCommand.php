@@ -57,7 +57,12 @@ class DebugCommand extends Command
         $output->writeln('Some Output');
 
         $logger = new ConsoleLogger($output);
-        $logger->log(ConsoleLogger::ERROR, 'dummy error message');
+        for ($i = 0; $i < 5; $i++) {
+            $logger->log(
+                ConsoleLogger::ERROR,
+                sprintf('Log message #%s from pid#%s',$i, getmypid())
+            );
+        }
 
         return Command::SUCCESS;
     }
