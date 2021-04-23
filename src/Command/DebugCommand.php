@@ -54,13 +54,14 @@ class DebugCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Some Output');
+        $output->writeln(sprintf('STDOUT from pid#%s', getmypid()));
 
         $logger = new ConsoleLogger($output);
+        sleep(1);
         for ($i = 0; $i < 5; $i++) {
             $logger->log(
                 ConsoleLogger::ERROR,
-                sprintf('Log message #%s from pid#%s',$i, getmypid())
+                sprintf('STDERR #%s from pid#%s',$i, getmypid())
             );
         }
 

@@ -6,7 +6,8 @@
     "php": "^7.4",
     "ext-json": "*",
     "symfony/console": "^5.2",
-    "psr/log": "^1.1"
+    "psr/log": "^1.1",
+    "symfony/process": "^5.2"
   },
   "autoload": {
     "psr-4": {
@@ -25,5 +26,8 @@
     }
   ],
   "scripts": {
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.2"
   }
 }
