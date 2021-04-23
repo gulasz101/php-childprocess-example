@@ -39,12 +39,10 @@ for ($i = 0; $i<5; $i++) {
     $processPool[$process->getPid()] = $process;
     $processTimesPool[$process->getPid()] = \Carbon\Carbon::now();
 
-    $process->stdout->on('data', $writeToStdOutClosure);
-    $process->stderr->on('data', $writeToStdOutClosure);
+    $process->stdout->on('data', fn ($chunk) => fwrite(STDOUT, $chunk));
+    $process->stderr->on('data', fn ($chunk) => fwrite( STDERR, $chunk));
 
-    $process->stdout->on('error', function (Exception $e) {
-        echo $e->getMessage();
-    });
+    $process->stdout->on('error', fn (Exception $e) => fwrite(STDERR, $e->getMessage()));
 
     $process->on('exit', function () use (&$processPool, &$processTimesPool, $process) {
 //        dump('exit', $process->getPid(), array_keys($processPool));
