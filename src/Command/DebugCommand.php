@@ -57,12 +57,16 @@ class DebugCommand extends Command
         $output->writeln(sprintf('STDOUT from pid#%s', getmypid()));
 
         $logger = new ConsoleLogger($output);
-        sleep(1);
+        sleep(5);
         for ($i = 0; $i < 5; $i++) {
             $logger->log(
                 ConsoleLogger::ERROR,
                 sprintf('STDERR #%s from pid#%s',$i, getmypid())
             );
+
+            if ($i == rand(0, 5)) {
+                throw new \Error(sprintf("Something really bad happened on process: %s", getmygid()));
+            }
         }
 
         return Command::SUCCESS;
