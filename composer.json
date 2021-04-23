@@ -1,0 +1,28 @@
+{
+  "name": "gulasz101/php-childprocess-example",
+  "type": "project",
+  "description": "Test project, sandbox playground.",
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*",
+    "symfony/console": "^5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Wojciech Guła",
+      "email": "gulasz101@gmail.com"
+    }
+  ],
+  "scripts": {
+  }
+}
