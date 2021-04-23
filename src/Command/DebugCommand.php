@@ -8,6 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 
 /**
  * Class DebugCommand
@@ -57,7 +58,10 @@ class DebugCommand extends Command
         $output->writeln(sprintf('STDOUT from pid#%s', getmypid()));
 
         $logger = new ConsoleLogger($output);
-        sleep(5);
+
+        // run on host level to not interfere with php process.
+        (new Process(['sleep', '5']))->mustRun();
+
         for ($i = 0; $i < 5; $i++) {
             $logger->log(
                 ConsoleLogger::ERROR,
