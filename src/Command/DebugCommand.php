@@ -6,6 +6,7 @@ namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -54,6 +55,9 @@ class DebugCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('Some Output');
+
+        $logger = new ConsoleLogger($output);
+        $logger->log(ConsoleLogger::ERROR, 'dummy error message');
 
         return Command::SUCCESS;
     }
