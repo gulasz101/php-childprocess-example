@@ -7,7 +7,8 @@
     "ext-json": "*",
     "symfony/console": "^5.2",
     "psr/log": "^1.1",
-    "symfony/process": "^5.2"
+    "symfony/process": "^5.2",
+    "react/child-process": "^0.6.2"
   },
   "autoload": {
     "psr-4": {
